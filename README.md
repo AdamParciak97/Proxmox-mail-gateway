@@ -1,7 +1,7 @@
 # Proxmox-mail-gateway
 Install and configuration connector e-mail
 
-Download iso file from link --> 
+Download iso file from link: 
 
 ```bash
 https://www.proxmox.com/en/downloads/proxmox-mail-gateway/iso/proxmox-mail-gateway-8-2-iso-installer
@@ -51,3 +51,17 @@ Add all domains (test.pl, remote.pl ...)
 <img width="1079" height="306" alt="image" src="https://github.com/user-attachments/assets/b9128474-1328-4532-aba3-3330c0d159a2" />
 
 ### We have ready machine PMG to integration with Exchange from Relay domains and transports
+
+### Optional settings
+<img width="396" height="368" alt="image" src="https://github.com/user-attachments/assets/9f21eae9-1f91-44d4-a2cc-ac6257c3643b" />
+
+<img width="376" height="323" alt="image" src="https://github.com/user-attachments/assets/9979acba-daa4-4641-b9d9-60ae9f2edb00" />
+
+### Configuration LDAP
+<img width="704" height="394" alt="image" src="https://github.com/user-attachments/assets/62091e63-c1e5-4408-bf29-593d83fd900f" />
+
+### Create local backup PMG
+<img width="929" height="497" alt="image" src="https://github.com/user-attachments/assets/30c2da4f-a754-4126-b66c-737618546382" />
+
+### Create certificates via open-ssh and upload key and chain certificates
+<img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
