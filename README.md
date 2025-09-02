@@ -8,9 +8,9 @@ https://www.proxmox.com/en/downloads/proxmox-mail-gateway/iso/proxmox-mail-gatew
 ```
 
 ### Architecture:
-CPU: 2 vCPU
-RAM: 4 GB
-Disk: 50 GB SSD
+## CPU: 2 vCPU
+## RAM: 4 GB
+## Disk: 50 GB SSD
 
 ### Install proxmox mail gateway
 
@@ -35,3 +35,19 @@ Disk: 50 GB SSD
 ### Summary and install
 <img width="1150" height="779" alt="image" src="https://github.com/user-attachments/assets/00918e11-d764-4e0d-ab2a-a760228901ea" />
 
+### First logon to machine
+```bash
+https://192.168.10.177:8006
+```
+
+## Login: root
+## Password: password entered during installation
+
+### Configuration Relay Domains
+Add all domains (test.pl, remote.pl ...)
+<img width="886" height="303" alt="image" src="https://github.com/user-attachments/assets/8f4c546c-0003-4f12-838c-5518baf8252e" />
+
+### Configuration transports
+<img width="1079" height="306" alt="image" src="https://github.com/user-attachments/assets/b9128474-1328-4532-aba3-3330c0d159a2" />
+
+### We have ready machine PMG to integration with Exchange from Relay domains and transports
