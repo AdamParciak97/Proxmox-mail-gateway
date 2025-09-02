@@ -65,3 +65,10 @@ Add all domains (test.pl, remote.pl ...)
 
 ### Create certificates via open-ssh and upload key and chain certificates
 <img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
+
+### We can configure proxy and edit administration e-mail 
+<img width="576" height="311" alt="image" src="https://github.com/user-attachments/assets/36c4c213-de10-4740-b4e5-96d9afd71d87" />
+
+### Final configuration - rules
+We can control and modify rules. We also add new rules to control flows.
+<img width="1920" height="756" alt="image" src="https://github.com/user-attachments/assets/b98d0558-5a4f-48d5-b935-b31aa67c9809" />
