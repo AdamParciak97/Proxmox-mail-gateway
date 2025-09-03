@@ -69,6 +69,19 @@ Add all domains (test.pl, remote.pl ...)
 ### We can configure proxy and edit administration e-mail 
 <img width="576" height="311" alt="image" src="https://github.com/user-attachments/assets/36c4c213-de10-4740-b4e5-96d9afd71d87" />
 
+### Configure syslog to SIEM
+## Login via SSH to SERVER
+## Modify file rsyslog.conf or install filebeat rpm
+<img width="211" height="44" alt="image" src="https://github.com/user-attachments/assets/766cdc99-9edc-4ef9-a9a6-d79d0e6f1b99" />
+## Paths worth analyzing in SIEM
+``` bash
+/var/log/syslog – system logs + postfix (mail flow);
+/var/log/pmgproxy/pmgproxy.log – GUI/API logs;
+/var/log/pmgdaemon/pmgdaemon.log – PMG daemon logs;
+/var/log/clamav/ – antivirus logs;
+/var/log/spamassassin/ – antispam logs
+```
+
 ### Final configuration - rules
 We can control and modify rules. We also add new rules to control flows.
 <img width="1920" height="756" alt="image" src="https://github.com/user-attachments/assets/b98d0558-5a4f-48d5-b935-b31aa67c9809" />
