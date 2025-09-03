@@ -1,7 +1,7 @@
 # Proxmox-mail-gateway
 Install and configuration connector e-mail
 
-Download iso file from link: 
+## Download iso file from link: 
 
 ```bash
 https://www.proxmox.com/en/downloads/proxmox-mail-gateway/iso/proxmox-mail-gateway-8-2-iso-installer
@@ -14,25 +14,25 @@ https://www.proxmox.com/en/downloads/proxmox-mail-gateway/iso/proxmox-mail-gatew
 
 ### Install proxmox mail gateway
 
-### Choose Proxmox Mail gateway (graphical)
+## Choose Proxmox Mail gateway (graphical)
 <img width="985" height="576" alt="image" src="https://github.com/user-attachments/assets/3a1ab4f2-4dfa-40fc-b3e2-08df687a9129" />
 
-### Accept the license
+## Accept the license
 <img width="1233" height="788" alt="image" src="https://github.com/user-attachments/assets/e46afb1a-3a6f-4af2-8d93-243f90137a9e" />
 
-### Click next
+## Click next
 <img width="1179" height="777" alt="image" src="https://github.com/user-attachments/assets/269fb56c-6903-4806-ba98-38a608179cc7" />
 
-### Choose clock and time-zone
+## Choose clock and time-zone
 <img width="1169" height="784" alt="image" src="https://github.com/user-attachments/assets/539661eb-1a41-488d-8ea9-19b0f1c1e735" />
 
-### Type password adminsitration
+## Type password adminsitration
 <img width="1234" height="789" alt="image" src="https://github.com/user-attachments/assets/6f27749f-5e5c-4a8e-b27f-e545d934424e" />
 
-### Type IP-address, gateway, hostname
+## Type IP-address, gateway, hostname
 <img width="1174" height="782" alt="image" src="https://github.com/user-attachments/assets/3fa1f1bf-38b5-48f8-b976-ba7ea14b63a1" />
 
-### Summary and install
+## Summary and install
 <img width="1150" height="779" alt="image" src="https://github.com/user-attachments/assets/00918e11-d764-4e0d-ab2a-a760228901ea" />
 
 ### First logon to machine
@@ -80,6 +80,8 @@ openssl req -in mx01.csr -noout -text
 
 <img width="611" height="674" alt="image" src="https://github.com/user-attachments/assets/13726580-cee2-47a2-9cf7-893e9e6172ce" />
 
+### We send the certificate to the office for signing
+
 ### Import private key and chain certificate
 <img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
 
@@ -91,7 +93,7 @@ openssl req -in mx01.csr -noout -text
 ## Modify file rsyslog.conf or install filebeat rpm
 <img width="211" height="44" alt="image" src="https://github.com/user-attachments/assets/766cdc99-9edc-4ef9-a9a6-d79d0e6f1b99" />
 
-### Paths worth analyzing in SIEM
+## Paths worth analyzing in SIEM
 
 ```bash
 /var/log/syslog – system logs + postfix (mail flow);
@@ -113,13 +115,13 @@ openssl req -in mx01.csr -noout -text
 
 <img width="783" height="145" alt="image" src="https://github.com/user-attachments/assets/692f5611-65dc-4a6a-87fb-d6671f1d1c57" />
 
-### Must wait a few minutes to connecting
+## Must wait a few minutes to connecting
 <img width="1195" height="217" alt="image" src="https://github.com/user-attachments/assets/b1c815b7-a6f0-47ba-8f00-b7a288362aa7" />
 
 ### TEST. Power off master and we have error with master. This node still filters mail, but in the GUI you will see an error at the master and you will not be able to make configuration changes (slaves are practically read-only)
 <img width="1176" height="226" alt="image" src="https://github.com/user-attachments/assets/b46cfe50-fba3-4ddd-9f71-f42d695c166d" />
 
-### If the master has been down for an extended period and you want another node to take over as master. Log in to the node that will become the new master and execute:
+## If the master has been down for an extended period and you want another node to take over as master. Log in to the node that will become the new master and execute:
 
 ```bash
 pmgcm promote
@@ -127,7 +129,7 @@ pmgcm promote
 
 <img width="1188" height="208" alt="image" src="https://github.com/user-attachments/assets/7cc3a8ac-f221-4b46-8e07-e2b04407ad0f" />
 
-### If we habe other nodes we must inform other node about new master
+## If we have other nodes we must inform other node about new master
 
 ```bash
 pmgcm sync --master "IP new MASTER"
