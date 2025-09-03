@@ -100,6 +100,19 @@ openssl req -in mx01.csr -noout -text
 /var/log/clamav/ – antivirus logs;
 /var/log/spamassassin/ – antispam logs
 ```
+### Create CLUSTER PMG
+
+## Create other machine with PMG
+## Click Create 
+
+<img width="1409" height="400" alt="image" src="https://github.com/user-attachments/assets/a68edf3b-2bb5-46ca-8030-391e9ddae03a" />
+
+### Join to Cluster PMG
+
+## We must click add to other machine and enter the IP address and the generated token
+
+<img width="783" height="145" alt="image" src="https://github.com/user-attachments/assets/692f5611-65dc-4a6a-87fb-d6671f1d1c57" />
+
 
 ### Final configuration - rules
 We can control and modify rules. We also add new rules to control flows.
