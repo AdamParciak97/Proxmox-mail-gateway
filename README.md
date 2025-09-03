@@ -80,7 +80,7 @@ openssl req -in mx01.csr -noout -text
 
 <img width="611" height="674" alt="image" src="https://github.com/user-attachments/assets/13726580-cee2-47a2-9cf7-893e9e6172ce" />
 
-### We send the certificate to the office for signing
+### We send the certificate to the PKI for signing
 
 ### Import private key and chain certificate
 <img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
