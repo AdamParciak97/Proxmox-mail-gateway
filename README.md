@@ -64,6 +64,11 @@ Add all domains (test.pl, remote.pl ...)
 <img width="929" height="497" alt="image" src="https://github.com/user-attachments/assets/30c2da4f-a754-4126-b66c-737618546382" />
 
 ### Create certificates via open-ssh and upload key and chain certificates
+
+### Create file reqsan.cnf. Add IP, Common name, Location, State, Country, Organization, Organization Unit
+<img width="527" height="613" alt="image" src="https://github.com/user-attachments/assets/ba0ad49b-60ed-4e8a-a45d-2834d56df918" />
+
+
 <img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
 
 ### We can configure proxy and edit administration e-mail 
@@ -73,8 +78,10 @@ Add all domains (test.pl, remote.pl ...)
 ## Login via SSH to SERVER
 ## Modify file rsyslog.conf or install filebeat rpm
 <img width="211" height="44" alt="image" src="https://github.com/user-attachments/assets/766cdc99-9edc-4ef9-a9a6-d79d0e6f1b99" />
-## Paths worth analyzing in SIEM
-``` bash
+
+### Paths worth analyzing in SIEM
+
+```bash
 /var/log/syslog – system logs + postfix (mail flow);
 /var/log/pmgproxy/pmgproxy.log – GUI/API logs;
 /var/log/pmgdaemon/pmgdaemon.log – PMG daemon logs;
