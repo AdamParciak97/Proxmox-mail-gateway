@@ -68,7 +68,19 @@ Add all domains (test.pl, remote.pl ...)
 ### Create file reqsan.cnf. Add IP, Common name, Location, State, Country, Organization, Organization Unit
 <img width="527" height="613" alt="image" src="https://github.com/user-attachments/assets/ba0ad49b-60ed-4e8a-a45d-2834d56df918" />
 
+### Create CSR and private key file
+```bash
+openssl req -new -newkey rsa:4096 -sha384 -nodes -keyout mx01.key -out mx01.csr -config reqsan.cnf -reqexts v3_req
+```
 
+### Check csr file
+```bash
+openssl req -in mx01.csr -noout -text
+```
+
+<img width="611" height="674" alt="image" src="https://github.com/user-attachments/assets/13726580-cee2-47a2-9cf7-893e9e6172ce" />
+
+### Import private key and chain certificate
 <img width="1257" height="692" alt="image" src="https://github.com/user-attachments/assets/298e3d61-2a14-49eb-b6bd-aec7f804ea1b" />
 
 ### We can configure proxy and edit administration e-mail 
