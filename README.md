@@ -113,6 +113,25 @@ openssl req -in mx01.csr -noout -text
 
 <img width="783" height="145" alt="image" src="https://github.com/user-attachments/assets/692f5611-65dc-4a6a-87fb-d6671f1d1c57" />
 
+### Must wait a few minutes to connecting
+<img width="1195" height="217" alt="image" src="https://github.com/user-attachments/assets/b1c815b7-a6f0-47ba-8f00-b7a288362aa7" />
+
+### TEST. Power off master and we have error with master. This node still filters mail, but in the GUI you will see an error at the master and you will not be able to make configuration changes (slaves are practically read-only)
+<img width="1176" height="226" alt="image" src="https://github.com/user-attachments/assets/b46cfe50-fba3-4ddd-9f71-f42d695c166d" />
+
+### If the master has been down for an extended period and you want another node to take over as master. Log in to the node that will become the new master and execute:
+
+```bash
+pmgcm promote
+```
+
+<img width="1188" height="208" alt="image" src="https://github.com/user-attachments/assets/7cc3a8ac-f221-4b46-8e07-e2b04407ad0f" />
+
+### If we habe other nodes we must inform other node about new master
+
+```bash
+pmgcm sync --master "IP new MASTER"
+```
 
 ### Final configuration - rules
 We can control and modify rules. We also add new rules to control flows.
