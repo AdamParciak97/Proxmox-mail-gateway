@@ -44,7 +44,7 @@ https://192.168.10.177:8006
 ## Password: password entered during installation
 
 ### Configuration Relay Domains
-Add all domains (test.pl, remote.pl ...)
+## Add all domains (test.pl, remote.pl ...)
 <img width="886" height="303" alt="image" src="https://github.com/user-attachments/assets/8f4c546c-0003-4f12-838c-5518baf8252e" />
 
 ### Configuration transports
