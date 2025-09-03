@@ -93,6 +93,11 @@ openssl req -in mx01.csr -noout -text
 ## Modify file rsyslog.conf or install filebeat rpm
 <img width="211" height="44" alt="image" src="https://github.com/user-attachments/assets/766cdc99-9edc-4ef9-a9a6-d79d0e6f1b99" />
 
+## restart service rsyslog
+
+```bash
+systemctl restart rsyslog
+```
 ## Paths worth analyzing in SIEM
 
 ```bash
