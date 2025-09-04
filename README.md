@@ -7,7 +7,7 @@ Install and configuration connector e-mail
 https://www.proxmox.com/en/downloads/proxmox-mail-gateway/iso/proxmox-mail-gateway-8-2-iso-installer
 ```
 
-### Architecture:
+### Architecture. Build Cluster (2 machine):
 ## CPU: 2 vCPU
 ## RAM: 4 GB
 ## Disk: 50 GB SSD
