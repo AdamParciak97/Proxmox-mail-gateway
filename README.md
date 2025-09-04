@@ -139,6 +139,30 @@ pmgcm promote
 ```bash
 pmgcm sync --master "IP new MASTER"
 ```
+## Update Claim AV
+### Download from Internet 
+```bash
+https://database.clamav.net/main.cvd
+https://database.clamav.net/daily.cvd
+https://database.clamav.net/bytecode.cvd
+```
+
+### Copy to machine PMG 
+### Copy file to directory 
+```bash
+cp main.cvd /var/lib/clamav/
+cp daily.cvd /var/lib/clamav/
+cp bytecode.cvd /var/lib/clamav/
+```
+### Change owner
+```bash
+chown clamav:clamav /var/lib/clamav/*.cvd
+```
+
+### Restart service 
+```bash
+systemctl restart clamav-daemon
+```
 
 ### Final configuration - rules
 We can control and modify rules. We also add new rules to control flows.
