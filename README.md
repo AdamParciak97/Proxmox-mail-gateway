@@ -1,5 +1,10 @@
-# Proxmox-mail-gateway
-Install and configuration connector e-mail
+# Install and configuration connector e-mail
+
+# Diagram 
+<img width="917" height="483" alt="image" src="https://github.com/user-attachments/assets/50b47935-a909-4c16-aa59-5121f418af29" />
+
+# Processing of Incoming E-Mail traffic
+<img width="920" height="555" alt="image" src="https://github.com/user-attachments/assets/5e2adc84-8998-4260-b8a5-d2002cada89c" />
 
 ## Download iso file from link: 
 
@@ -50,9 +55,51 @@ https://192.168.10.177:8006
 ### Configuration transports
 <img width="1079" height="306" alt="image" src="https://github.com/user-attachments/assets/b9128474-1328-4532-aba3-3330c0d159a2" />
 
-### We have ready machine PMG to integration with Exchange from Relay domains and transports
+## We have ready machine PMG to integration with Exchange from Relay domains and transports
 
-### Optional settings
+### Add DNS MX 
+```bash
+pmg.test.pl   3600 IN MX 5  [192.168.10.177]
+pmg.test.pl   3600 IN MX 10 [192.168.10.176]
+```
+
+### Add Receive Connector to Exchange1 and Exchange2
+```bash
+New-ReceiveConnector -Name "Inbound from PMG" -Server EX1 `
+  -TransportRole FrontendTransport -Bindings 0.0.0.0:25 `
+  -RemoteIPRanges 192.168.10.176,192.168.10.177 `
+  -PermissionGroups AnonymousUsers `
+  -AuthMechanism Tls
+```
+
+```bash
+New-ReceiveConnector -Name "Inbound from PMG" -Server EX2 `
+  -TransportRole FrontendTransport -Bindings 0.0.0.0:25 `
+  -RemoteIPRanges 192.168.10.176,192.168.10.177 `
+  -PermissionGroups AnonymousUsers `
+  -AuthMechanism Tls
+```
+
+### Add Sender Connector (primary and backup). Small cost (1) - primary. Higher cost (10) - backup.
+```bash
+New-SendConnector -Name "Outbound via PMG1 (primary)" `
+  -AddressSpaces "SMTP:*;1" -Custom -DnsRoutingEnabled:$false `
+  -SmartHosts "[192.168.10.177]" `
+  -SmartHostAuthMechanism None -TlsAuthLevel EncryptionOnly `
+  -SourceTransportServers EX1,EX2 `
+  -ProtocolLoggingLevel Verbose
+```
+
+```bash
+New-SendConnector -Name "Outbound via PMG2 (backup)" `
+  -AddressSpaces "SMTP:*;10" -Custom -DnsRoutingEnabled:$false `
+  -SmartHosts "[192.168.10.176]" `
+  -SmartHostAuthMechanism None -TlsAuthLevel EncryptionOnly `
+  -SourceTransportServers EX1,EX2 `
+  -ProtocolLoggingLevel Verbose
+```
+
+## Optional settings
 <img width="396" height="368" alt="image" src="https://github.com/user-attachments/assets/9f21eae9-1f91-44d4-a2cc-ac6257c3643b" />
 
 <img width="376" height="323" alt="image" src="https://github.com/user-attachments/assets/9979acba-daa4-4641-b9d9-60ae9f2edb00" />
@@ -93,8 +140,64 @@ openssl req -in mx01.csr -noout -text
 ## Modify file rsyslog.conf or install filebeat rpm
 <img width="211" height="44" alt="image" src="https://github.com/user-attachments/assets/766cdc99-9edc-4ef9-a9a6-d79d0e6f1b99" />
 
-## restart service rsyslog
+## Sample file filebeat.yml
+```bash
+filebeat.inputs:
+  # PMG GUI/API access log
+  - type: filestream
+    id: pmgproxy
+    enabled: true
+    paths: ["/var/log/pmgproxy/pmgproxy.log"]
+    pipeline: "pmgproxy-access-pipeline"
+    fields:
+      service: pmgproxy
+      role: pmg
+      env: prod
+    fields_under_root: true
 
+  # PMG daemon log
+  - type: filestream
+    id: pmgdaemon
+    enabled: true
+    paths: ["/var/log/pmgdaemon/pmgdaemon.log"]
+    fields:
+      service: pmgdaemon
+      role: pmg
+      env: prod
+    fields_under_root: true
+
+filebeat.modules:
+  - module: postfix
+    log:
+      enabled: true
+      var.paths:
+        - /var/log/mail.log
+        - /var/log/mail.info
+        - /var/log/mail.warn
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+
+setup.template.name: "pmg"
+setup.template.pattern: "pmg-*"
+setup.ilm.enabled: false
+
+output.elasticsearch:
+  hosts: ["https://es01:9200"]     # ← change
+  username: "elastic"              # ← change
+  password: "changme!"            # ← change
+  ssl.verification_mode: none
+  index: "pmg-%{+yyyy.MM.dd}"
+```
+
+## Test filebeat config and output
+```bash
+filebeat test config
+filebeat test output
+```
+
+## Restart service rsyslog
 ```bash
 systemctl restart rsyslog
 ```
